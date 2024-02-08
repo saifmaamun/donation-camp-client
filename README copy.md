@@ -1,8 +1,8 @@
 # Donation Camp
 
-### FrontEnd [Git Link](https://pages.github.com/).
+### FrontEnd [Git Link](https://github.com/saifmaamun/donation-camp-client).
 
-### FrontEnd [Live Link](https://pages.github.com/).
+### FrontEnd [Live Link](https://donation-camp-client.vercel.app/).
 
 ### BackEnd [Git Link](https://github.com/saifmaamun/donation-nextJS).
 
