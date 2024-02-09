@@ -2,17 +2,45 @@
 
 import Loading from "@/app/loading";
 import { TParams } from "@/interfaces/TParams";
-import { useGetPostByIdQuery } from "@/redux/features/donationPost/donationPostApi";
-import { Card } from "antd";
+import {
+  useEditPostMutation,
+  useGetPostByIdQuery,
+} from "@/redux/features/donationPost/donationPostApi";
+import { Button, Card } from "antd";
 import Image from "next/image";
 import { Space, Typography } from "antd";
+import { useAppDispatch } from "@/redux/hooks";
+import {
+  setAmount,
+  setCategory,
+  setDetails,
+  setId,
+  setImg,
+  setTheme,
+  setTitle,
+} from "@/redux/features/donationPost/donationPostSlice";
 
 const { Text, Link } = Typography;
 
 const DonationDetails = ({ params }: { params: TParams }) => {
   const { data, isLoading } = useGetPostByIdQuery(params.donationId);
-  // const { title, category, details, img_url, theme_url, donation_amount } =
-  //   data?.data;
+
+  // setting the data into store
+  const dispatch = useAppDispatch();
+  if (data?.data) {
+    dispatch(setId(params.donationId));
+    dispatch(setTitle(data?.data.title));
+    dispatch(setCategory(data?.data.category));
+    dispatch(setImg(data?.data.img_url));
+    dispatch(setTheme(data?.data.theme_url));
+    dispatch(setDetails(data?.data.details));
+    dispatch(setAmount(data?.data.donation_amount));
+  }
+
+  const [editPost] = useEditPostMutation();
+
+  // handel donation
+  const handleDonation = () => {};
 
   return (
     <>
@@ -33,6 +61,11 @@ const DonationDetails = ({ params }: { params: TParams }) => {
             </Text>
             <p className="">{data?.data?.details}</p>
             <p>{data?.data?.donation_amount}</p>
+            <div className="my-4">
+              <Button onClick={handleDonation}>
+                Donate {data?.data?.donation_amount}
+              </Button>
+            </div>
           </Card>
         </div>
       )}

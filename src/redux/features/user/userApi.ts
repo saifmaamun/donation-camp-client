@@ -14,7 +14,6 @@ const userApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      //   invalidatesTags: ["User"],
     }),
     login: builder.mutation({
       query: (data) => ({
@@ -22,7 +21,6 @@ const userApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      //   invalidatesTags: ["User"],
     }),
   }),
 });
