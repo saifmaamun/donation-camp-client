@@ -6,6 +6,7 @@ import Footer from "@/components/shared/Footer";
 import Providers from "@/lib/Providers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/authOptions";
+import { useAppDispatch } from "@/redux/hooks";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,12 +22,13 @@ export default async function RootLayout({
 }>) {
   // checking the user is logged in
   const session = await getServerSession(authOptions);
-  // console.log(session);
+  const user = { email: session?.email, role: session?.role };
+  console.log(session?.email, session?.role, user);
   return (
     <Providers>
       <html lang="en">
         <body className={inter.className}>
-          <Navbar session={session ? true : false} />
+          <Navbar session={session ? true : false} user={user} />
           <div className="min-h-screen">{children}</div>
           {/* <Footer /> */}
         </body>

@@ -1,6 +1,14 @@
 "use client";
 
+import {
+  TInitialState,
+  setEmail,
+  setRole,
+} from "@/redux/features/user/userSlice";
+import { useAppDispatch } from "@/redux/hooks";
+import { authOptions } from "@/utils/authOptions";
 import { Button, Dropdown, Layout, Menu, Typography } from "antd";
+import { getServerSession } from "next-auth";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -19,10 +27,14 @@ const items = [
   // { key: "2", label: "Dashboard", href: "/dashboard" },
 ];
 
-const Navbar = ({ session }: { session: any }) => {
+const Navbar = ({ session, user }: { session: any; user: TInitialState }) => {
+  //  ser user
+  const dispatch = useAppDispatch();
+  dispatch(setEmail(user?.email));
+  dispatch(setRole(user?.role));
+
   // for mobile
   const [show, setShow] = useState(false);
-
   const handleShow = () => {
     setShow(!show);
   };

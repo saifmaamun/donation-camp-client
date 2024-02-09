@@ -6,14 +6,15 @@ import {
   useEditPostMutation,
   useGetPostByIdQuery,
 } from "@/redux/features/donationPost/donationPostApi";
-import { Button, Card } from "antd";
+import { Button, Card, message } from "antd";
 import Image from "next/image";
 import { Space, Typography } from "antd";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
   setAmount,
   setCategory,
   setDetails,
+  setDonation,
   setId,
   setImg,
   setTheme,
@@ -36,11 +37,46 @@ const DonationDetails = ({ params }: { params: TParams }) => {
     dispatch(setDetails(data?.data.details));
     dispatch(setAmount(data?.data.donation_amount));
   }
+  const {
+    id,
+    title,
+    category,
+    img_url,
+    theme_url,
+    details,
+    donation_amount,
+    donation,
+  } = useAppSelector((state) => state.donation);
 
   const [editPost] = useEditPostMutation();
 
   // handel donation
-  const handleDonation = () => {};
+  const handleDonation = () => {
+    const donationData = {
+      id: params.donationId,
+      category: category,
+      title: title,
+      amount: donation_amount,
+    };
+    dispatch(setDonation(donationData));
+    const updatedData = {
+      id,
+      title,
+      category,
+      img_url,
+      theme_url,
+      details,
+      donation_amount,
+      donation,
+    };
+
+    const option = {
+      id: id,
+      data: updatedData,
+    };
+    console.log(option);
+    editPost(option).then(() => message.success("Thank you for your donation"));
+  };
 
   return (
     <>
