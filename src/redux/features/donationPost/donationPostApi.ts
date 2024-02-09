@@ -14,7 +14,33 @@ const donationPostApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    addPost: builder.mutation({
+      query: (data) => ({
+        url: `/posts`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+    deletePost: builder.mutation({
+      query: (id) => ({
+        url: `/posts/${id}`,
+        method: "DELETE",
+      }),
+    }),
+    editPost: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/posts/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllPostsQuery, useGetPostByIdQuery } = donationPostApi;
+export const {
+  useGetAllPostsQuery,
+  useGetPostByIdQuery,
+  useAddPostMutation,
+  useDeletePostMutation,
+  useEditPostMutation,
+} = donationPostApi;
