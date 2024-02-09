@@ -1,9 +1,11 @@
 "use client";
 
-import { Button, Layout, Menu, Typography } from "antd";
+import { Button, Dropdown, Layout, Menu, Typography } from "antd";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+// for mobile
+import { useState } from "react";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -18,6 +20,13 @@ const items = [
 ];
 
 const Navbar = ({ session }: { session: any }) => {
+  // for mobile
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => {
+    setShow(!show);
+  };
+
   const pathname = usePathname();
   const router = useRouter();
 
@@ -70,6 +79,57 @@ const Navbar = ({ session }: { session: any }) => {
             </>
           )}
         </Menu>
+
+        {/* for mobile */}
+        <Button onClick={handleShow} className="lg:hidden sm:block -mr-6">
+          Menu
+        </Button>
+        {show && (
+          <div className="relative">
+            <Menu className=" absolute top-8 -right-8 lg:hidden sm:block">
+              {items?.map((item) => (
+                <Menu.Item key={item.href}>
+                  <Link onClick={handleShow} href={item.href}>
+                    {item.label}
+                  </Link>
+                </Menu.Item>
+              ))}
+              {!session ? (
+                <>
+                  <Menu.Item>
+                    <Link onClick={handleShow} href="/login">
+                      login
+                    </Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <Link onClick={handleShow} href="/signin">
+                      Signup
+                    </Link>
+                  </Menu.Item>
+                </>
+              ) : (
+                <>
+                  <Menu.Item>
+                    <Link onClick={handleShow} href="/dashboard">
+                      Dashboard
+                    </Link>
+                  </Menu.Item>
+                  <Button
+                    className="ml-4"
+                    ghost
+                    size="large"
+                    type="primary"
+                    onClick={() => {
+                      signOut().then(() => router.push("/"));
+                    }}
+                  >
+                    Logout
+                  </Button>
+                </>
+              )}
+            </Menu>
+          </div>
+        )}
       </Header>
     </Layout>
   );

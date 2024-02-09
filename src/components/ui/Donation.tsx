@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Donation = ({ donations }: { donations: TDonation[] }) => {
   return (
-    <div className="col-span-9 grid grid-cols-3 gap-5 p-10 w-[80%] mx-auto">
+    <div className="col-span-9 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-5 p-10 lg:w-[80%] mx-auto">
       {donations?.map((donation: TDonation) => (
         <div
           key={donation._id}
