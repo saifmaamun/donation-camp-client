@@ -1,6 +1,7 @@
 "use client";
 
 import { Button, Layout, Menu, Typography } from "antd";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -10,13 +11,13 @@ const { Title } = Typography;
 const items = [
   { key: "1", label: "Home", href: "/" },
   { key: "2", label: "Donations", href: "/donations" },
-  { key: "2", label: "Statistics", href: "/state" },
-  { key: "2", label: "Signup", href: "/signin" },
-  { key: "2", label: "Login", href: "/login" },
-  { key: "2", label: "Dashboard", href: "/dashboard" },
+  { key: "3", label: "Statistics", href: "/state" },
+  // { key: "2", label: "Signup", href: "/signin" },
+  // { key: "2", label: "Login", href: "/login" },
+  // { key: "2", label: "Dashboard", href: "/dashboard" },
 ];
 
-const Navbar = () => {
+const Navbar = ({ session }: { session: any }) => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -41,17 +42,33 @@ const Navbar = () => {
               <Link href={item.href}>{item.label}</Link>
             </Menu.Item>
           ))}
-          <Button
-            className="ml-4"
-            ghost
-            size="large"
-            type="primary"
-            onClick={() => {
-              router.push("/");
-            }}
-          >
-            Logout
-          </Button>
+          {!session ? (
+            <>
+              <Menu.Item>
+                <Link href="/login">login</Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link href="/signin">Signup</Link>
+              </Menu.Item>
+            </>
+          ) : (
+            <>
+              <Menu.Item>
+                <Link href="/dashboard">Dashboard</Link>
+              </Menu.Item>
+              <Button
+                className="ml-4"
+                ghost
+                size="large"
+                type="primary"
+                onClick={() => {
+                  signOut().then(() => router.push("/"));
+                }}
+              >
+                Logout
+              </Button>
+            </>
+          )}
         </Menu>
       </Header>
     </Layout>

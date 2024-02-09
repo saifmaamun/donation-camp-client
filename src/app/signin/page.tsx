@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { useSignUpMutation } from "@/redux/features/user/userApi";
 import { callbackify } from "util";
+import { usePathname, useRouter } from "next/navigation";
 // import { createUser } from "@/utils/actions/create-user";
 
 type TForm = {
@@ -15,6 +16,8 @@ type TForm = {
   password: string;
 };
 const Signin = () => {
+  const pathname = usePathname();
+  const router = useRouter();
   const [signUp, { data, isLoading, isError, isSuccess, status }] =
     useSignUpMutation({});
 
@@ -33,7 +36,7 @@ const Signin = () => {
       email: res.email,
       password: res.password,
     };
-    await signUp(credential);
+    await signUp(credential).then(() => router.push("/login"));
     // const res = await createUser(data);
     if (!isError && !isLoading) {
       message.success("User created successfully");
@@ -45,25 +48,6 @@ const Signin = () => {
       <div className="lg:p-10 md:p-6 p-2 shadow-xl bg-white max-w-lg my-12 mx-auto">
         <h1 className="text-2xl text-center mb-8">Register</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* <div className="mb-4 w-full">
-            <label>User Name</label>
-            <input
-              type="text"
-              placeholder="User Name"
-              className="w-full mt-2 p-3 border border-gray-500 rounded-md form-control"
-              {...register("username", {
-                required: {
-                  value: true,
-                  message: "Username is required",
-                },
-              })}
-            />
-            {errors.username?.type === "required" && (
-              <span className="label-text-alt text-red-500 text-sm">
-                {errors.username.message}
-              </span>
-            )}
-          </div> */}
           <div className="mb-4 w-full">
             <label>Email Address</label>
             <input

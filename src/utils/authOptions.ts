@@ -24,7 +24,6 @@ export const authOptions = {
             headers: { "Content-Type": "application/json" },
           });
           const { data } = await res.json();
-          // console.log(user);
 
           // If no error and we have user data, return it
           if (res.ok && data) {
@@ -35,8 +34,6 @@ export const authOptions = {
         } catch (err: any) {
           throw new Error(err.message);
         }
-
-        // Return null if user data could not be retrieved
       },
     }),
   ],
