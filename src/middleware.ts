@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
 
   const role = token?.role;
 
-  if (role === "admin") {
+  if (role === "admin" && pathname.startsWith("/admin")) {
     return NextResponse.next();
   }
 
