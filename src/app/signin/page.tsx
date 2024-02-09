@@ -45,7 +45,7 @@ const Signin = () => {
       <div className="lg:p-10 md:p-6 p-2 shadow-xl bg-white max-w-lg my-12 mx-auto">
         <h1 className="text-2xl text-center mb-8">Register</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="mb-4 w-full">
+          {/* <div className="mb-4 w-full">
             <label>User Name</label>
             <input
               type="text"
@@ -63,7 +63,7 @@ const Signin = () => {
                 {errors.username.message}
               </span>
             )}
-          </div>
+          </div> */}
           <div className="mb-4 w-full">
             <label>Email Address</label>
             <input
