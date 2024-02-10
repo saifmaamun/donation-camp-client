@@ -10,7 +10,7 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
     { key: "1", label: "Dashboard", href: "/dashboard" },
     { key: "2", label: "Manage Donations", href: "/admin/manage-donations" },
     { key: "3", label: "My Donations", href: "/user/my-donations" },
-    { key: "4", label: "All Donations", href: "/" },
+    { key: "4", label: "All Donations", href: "/admin/all-donations" },
   ];
 
   const pathname = usePathname();
@@ -24,7 +24,7 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
         <Layout className="lg:flex hidden">
           <Sider
             width={250}
-            className="min-h-screen bg-[#66b5eb] m-6 py-2 rounded-xl"
+            className="min-h-screen bg-black m-6 py-2 rounded-xl"
           >
             <Menu
               className="h-full px-3 font-semibold  bg-transparent py-1"
@@ -33,7 +33,10 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
               selectedKeys={[getSelectedKey()]}
             >
               {adminItems?.map((item) => (
-                <Menu.Item key={item.key} className="text-blue-900">
+                <Menu.Item
+                  key={item.key}
+                  className="text-red-700 active:bg-red-700"
+                >
                   <Link href={item.href}>{item.label}</Link>
                 </Menu.Item>
               ))}

@@ -23,7 +23,7 @@ export default async function RootLayout({
   // checking the user is logged in
   const session = await getServerSession(authOptions);
   const user = { email: session?.email, role: session?.role };
-  console.log(session?.email, session?.role, user);
+  // console.log(session?.email, session?.role, user);
   return (
     <Providers>
       <html lang="en">

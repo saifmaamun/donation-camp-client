@@ -44,41 +44,41 @@ const Navbar = ({ session, user }: { session: any; user: TInitialState }) => {
 
   return (
     <Layout className="layout shadow-lg">
-      <Header className="flex items-center py-8 bg-white ">
+      <Header className="flex items-center py-8 bg-black ">
         <Content>
           <Link href="/">
-            <Title className="m-0 text-2xl flex items-center">
-              <p className="m-0 ml-2">Donation Camp</p>
+            <Title className="m-0 lg:text-2xl  text-white flex items-center">
+              <p className="m-0 ml-2 ">Donation Camp</p>
             </Title>
           </Link>
         </Content>
         <Menu
-          className="lg:block hidden"
+          className="lg:block hidden bg-black"
           disabledOverflow
           mode="horizontal"
           selectedKeys={[pathname]}
         >
           {items?.map((item) => (
-            <Menu.Item key={item.href}>
+            <Menu.Item key={item.href} className="text-white">
               <Link href={item.href}>{item.label}</Link>
             </Menu.Item>
           ))}
           {!session ? (
             <>
-              <Menu.Item>
+              <Menu.Item className="text-white">
                 <Link href="/login">login</Link>
               </Menu.Item>
-              <Menu.Item>
+              <Menu.Item className="text-white">
                 <Link href="/signin">Signup</Link>
               </Menu.Item>
             </>
           ) : (
             <>
-              <Menu.Item>
+              <Menu.Item className="text-white">
                 <Link href="/dashboard">Dashboard</Link>
               </Menu.Item>
               <Button
-                className="ml-4"
+                className="ml-4 text-white"
                 ghost
                 size="large"
                 type="primary"

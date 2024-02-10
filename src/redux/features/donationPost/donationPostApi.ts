@@ -7,6 +7,7 @@ const donationPostApi = baseApi.injectEndpoints({
         url: `/posts`,
         method: "GET",
       }),
+      providesTags: ["Donation"],
     }),
     getPostById: builder.query({
       query: (id) => ({
@@ -20,12 +21,14 @@ const donationPostApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Donation"],
     }),
     deletePost: builder.mutation({
       query: (id) => ({
         url: `/posts/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["Donation"],
     }),
     editPost: builder.mutation({
       query: ({ id, data }) => ({
