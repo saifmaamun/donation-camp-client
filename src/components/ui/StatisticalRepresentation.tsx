@@ -107,29 +107,23 @@ const StatisticalRepresentation = () => {
 
   return (
     <div>
-      <h1>{donatedData?.data?.length}</h1>
-      <h1>{donationPost?.data?.length}</h1>
-      <h1>{users?.data?.length}</h1>
-      <h1>{totalAmount}</h1>
-      <Button onClick={() => setChart("Bar")}>BarChart</Button>
-      <br />
-      <Button onClick={() => setChart("Pie")}>PieChart</Button>
-      <>
-        {chart === "Bar" && (
-          <Bar
-            className="w-3/5 h-1/2 mx-auto"
-            options={options}
-            data={data}
-          ></Bar>
-        )}
-        {chart === "Pie" && (
-          <Pie
-            className="w-3/5 h-1/2 mx-auto"
-            options={options}
-            data={data}
-          ></Pie>
-        )}
-      </>
+      <div className="grid grid-cols-1 justify-center my-12 align-middle space-x-6 space-y-6">
+        <div className="space-y-2">
+          <Button className="" onClick={() => setChart("Bar")}>
+            BarChart
+          </Button>
+          <br />
+          <Button onClick={() => setChart("Pie")}>PieChart</Button>
+        </div>
+        <div>
+          {chart === "Bar" && (
+            <Bar className="w-fit " options={options} data={data}></Bar>
+          )}
+          {chart === "Pie" && (
+            <Pie className="w-4/5 mx-auto " options={options} data={data}></Pie>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 const Statistics = () => {
   return (
-    <div className="my-12 container mx-auto">
-      <h1>Statistics</h1>
+    <div className="my-12 text-center mx-auto space-y-6">
+      <h1>Graphical representations</h1>
       <StatisticalRepresentation />
     </div>
   );

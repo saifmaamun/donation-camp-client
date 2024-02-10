@@ -55,7 +55,7 @@ const AllDonation = () => {
       render: (record: AnyObject) => {
         return (
           <div>
-            <Image src={record.img_url} width={400} height={150} alt="pic" />
+            <Image src={record.img_url} width={100} height={75} alt="pic" />
           </div>
         );
       },
@@ -113,9 +113,9 @@ const AllDonation = () => {
         <Loading />
       ) : (
         <>
-          <h1>data</h1>
-          <div className="flex justify-between items-center pb-4">
-            <h1 className="text-2xl ">Manage Donation Post</h1>
+          <div className="lg:flex justify-between  my-6 items-center pb-4">
+            <h1 className=" ">Manage Donation Post</h1>
+
             <Button
               type="link"
               onClick={() => router.push("/admin/add-donation")}
@@ -123,7 +123,9 @@ const AllDonation = () => {
               <PlusOutlined /> Add New Donation Post{" "}
             </Button>
           </div>
-          <Table columns={columns} dataSource={data?.data} />
+          <div className=" w-full mx-auto my-6">
+            <Table columns={columns} dataSource={data?.data} />
+          </div>
         </>
       )}
     </>

@@ -21,10 +21,8 @@ const { Title } = Typography;
 const items = [
   { key: "1", label: "Home", href: "/" },
   { key: "2", label: "Donations", href: "/donations" },
-  { key: "3", label: "Statistics", href: "/state" },
-  // { key: "2", label: "Signup", href: "/signin" },
-  // { key: "2", label: "Login", href: "/login" },
-  // { key: "2", label: "Dashboard", href: "/dashboard" },
+  { key: "2", label: "About Us", href: "/about" },
+  { key: "2", label: "Contact Us", href: "/contact" },
 ];
 
 const Navbar = ({ session, user }: { session: any; user: TInitialState }) => {
@@ -47,8 +45,8 @@ const Navbar = ({ session, user }: { session: any; user: TInitialState }) => {
       <Header className="flex items-center py-8 bg-black ">
         <Content>
           <Link href="/">
-            <Title className="m-0 lg:text-2xl  text-white flex items-center">
-              <p className="m-0 ml-2 ">Donation Camp</p>
+            <Title className="m-0 lg:text-4xl md:text-3xl sm:text-2xl text-xl    text-white flex items-center">
+              <p className="m-0 ml-2 ">Donation Camps</p>
             </Title>
           </Link>
         </Content>
