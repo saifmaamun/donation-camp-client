@@ -79,13 +79,7 @@ const AllDonation = () => {
       dataIndex: "donation_amount",
       key: "amount",
     },
-    {
-      title: "Total Donated",
-      key: "action",
-      render: (record: AnyObject) => {
-        return <div>{record.donation.length} times</div>;
-      },
-    },
+
     {
       title: "Edit/ Delete",
       key: "action",

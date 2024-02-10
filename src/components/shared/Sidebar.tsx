@@ -8,9 +8,8 @@ const { Content, Sider } = Layout;
 const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const adminItems = [
     { key: "1", label: "Dashboard", href: "/dashboard" },
-    { key: "2", label: "Manage Donations", href: "/admin/manage-donations" },
-    { key: "3", label: "My Donations", href: "/user/my-donations" },
-    { key: "4", label: "All Donations", href: "/admin/all-donations" },
+    { key: "3", label: "My Contributions", href: "/user/my-donations" },
+    { key: "4", label: "All Donation Posts", href: "/admin/all-donations" },
   ];
 
   const pathname = usePathname();

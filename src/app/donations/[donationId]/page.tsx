@@ -20,6 +20,7 @@ import {
   setTheme,
   setTitle,
 } from "@/redux/features/donationPost/donationPostSlice";
+import { useAddDataMutation } from "@/redux/features/donated/donatedApi";
 
 const { Text, Link } = Typography;
 
@@ -38,46 +39,23 @@ const DonationDetails = ({ params }: { params: TParams }) => {
     dispatch(setDetails(data?.data.details));
     dispatch(setAmount(data?.data.donation_amount));
   }
-  const {
-    id,
-    title,
-    category,
-    img_url,
-    theme_url,
-    details,
-    donation_amount,
-    donation,
-  } = useAppSelector((state) => state.donation);
+  const { id, title, category, img_url, theme_url, details, donation_amount } =
+    useAppSelector((state) => state.donation);
 
-  const [editPost] = useEditPostMutation();
+  const [addData] = useAddDataMutation();
 
   // handel donation
   const handleDonation = () => {
     const donationData = {
       id: params.donationId,
-      email: email,
-      category: category,
       title: title,
       amount: donation_amount,
-    };
-    dispatch(setDonation(donationData));
-    const updatedData = {
-      id,
-      title,
-      category,
-      img_url,
-      theme_url,
-      details,
-      donation_amount,
-      donation,
+      email: email,
     };
 
-    const option = {
-      id: id,
-      data: updatedData,
-    };
-    console.log(option);
-    editPost(option).then(() => message.success("Thank you for your donation"));
+    addData(donationData).then(() =>
+      message.success("Thank you for your donation")
+    );
   };
 
   return (

@@ -36,6 +36,7 @@ const donationPostApi = baseApi.injectEndpoints({
         method: "PATCH",
         body: data,
       }),
+      invalidatesTags: ["Donation"],
     }),
   }),
 });

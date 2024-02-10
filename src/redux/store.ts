@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "./api/baseApi";
 import donationReducer from "./features/donationPost/donationPostSlice";
 import userReducer from "./features/user/userSlice";
+// import donatedReducer from "./features/donated/donatedSlice";
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     donation: donationReducer,
+    // donated: donatedReducer,
     user: userReducer,
   },
   middleware: (getDefaultMiddleware) =>
