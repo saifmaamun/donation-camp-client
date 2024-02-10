@@ -30,7 +30,7 @@ export default async function RootLayout({
         <body className={inter.className}>
           <Navbar session={session ? true : false} user={user} />
           <div className="min-h-screen">{children}</div>
-          {/* <Footer /> */}
+          <Footer />
         </body>
       </html>
     </Providers>
