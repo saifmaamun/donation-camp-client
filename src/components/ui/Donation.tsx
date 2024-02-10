@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Donation = ({ donations }: { donations: TDonation[] }) => {
   return (
-    <div className="col-span-9 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-5 p-10 lg:w-[80%] mx-auto">
+    <div className="col-span-9 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mb-20 gap-5 p-10 lg:w-[80%] mx-auto">
       {donations?.map((donation: TDonation) => (
         <div
           key={donation._id}
@@ -31,7 +31,9 @@ const Donation = ({ donations }: { donations: TDonation[] }) => {
             href={`/donations/${donation._id}`}
             className="mt-4 w-full text-right"
           >
-            <Button type="primary">Details</Button>
+            <Button type="primary" className="bg-black">
+              Details
+            </Button>
           </Link>
         </div>
       ))}

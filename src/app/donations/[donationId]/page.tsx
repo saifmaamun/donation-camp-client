@@ -21,6 +21,7 @@ import {
   setTitle,
 } from "@/redux/features/donationPost/donationPostSlice";
 import { useAddDataMutation } from "@/redux/features/donated/donatedApi";
+import { HeartFilled } from "@ant-design/icons";
 
 const { Text, Link } = Typography;
 
@@ -78,8 +79,8 @@ const DonationDetails = ({ params }: { params: TParams }) => {
             <p className="">{data?.data?.details}</p>
             <p>{data?.data?.donation_amount}</p>
             <div className="my-4">
-              <Button onClick={handleDonation}>
-                Donate {data?.data?.donation_amount}
+              <Button className="bg-black text-white" onClick={handleDonation}>
+                Donate {data?.data?.donation_amount} <HeartFilled />
               </Button>
             </div>
           </Card>
