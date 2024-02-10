@@ -118,7 +118,7 @@ const AllDonation = () => {
 
             <Button
               type="link"
-              onClick={() => router.push("/admin/add-donation")}
+              onClick={() => router.push("/dashboard/admin/add-donation")}
             >
               <PlusOutlined /> Add New Donation Post{" "}
             </Button>

@@ -8,8 +8,11 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const role = token?.role;
+  console.log(token, role);
 
-  if (role === "admin" && pathname.startsWith("/admin")) {
+  // role checking
+
+  if (role === "admin" && pathname.startsWith("/dashboard/admin")) {
     return NextResponse.next();
   }
 
@@ -18,5 +21,5 @@ export async function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: "/admin/:page*",
+  matcher: "/dashboard/admin/:page*",
 };

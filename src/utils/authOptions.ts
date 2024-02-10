@@ -40,7 +40,7 @@ export const authOptions = {
 
   callbacks: {
     async jwt({ token, user }: { token: any; user: any }) {
-      //   console.log(token, user);
+      console.log(token.role);
       // Persist the OAuth access_token and or the user id to the token right after signin
       return {
         ...token,

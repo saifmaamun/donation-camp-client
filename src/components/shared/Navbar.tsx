@@ -81,7 +81,8 @@ const Navbar = ({ session, user }: { session: any; user: TInitialState }) => {
                 size="large"
                 type="primary"
                 onClick={() => {
-                  signOut().then(() => router.push("/"));
+                  signOut();
+                  router.push("/");
                 }}
               >
                 Logout
