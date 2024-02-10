@@ -19,7 +19,7 @@ import {
   Legend,
 } from "chart.js";
 import { useState } from "react";
-import { Bar, Pie, Radar } from "react-chartjs-2";
+import { Bar, Pie } from "react-chartjs-2";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -50,15 +50,20 @@ const StatisticalRepresentation = () => {
   const amounts = donationPost?.data?.map(
     (item: { donation_amount: any }) => item.donation_amount
   );
+  const category = donationPost?.data?.map(
+    (item: { category: any }) => item.category
+  );
+  const cAmounts = donationPost?.data?.map(
+    (item: { donation_amount: any }) => item.donation_amount
+  );
 
   //users ersonal donations
   const matchedData = donatedData?.data.filter(
     (data: { email: string }) => data.email === userEmail
   );
-  const userAmounts = matchedData?.data?.map(
-    (item: { donation_amount: any }) => item.donation_amount
-  );
-  console.log(userAmounts);
+  //   console.log(matchedData);
+  const userAmounts = matchedData?.map((item: { amount: any }) => item.amount);
+  //   console.log(userAmounts);
 
   // random color
   // Function to generate a random hex color
@@ -71,36 +76,31 @@ const StatisticalRepresentation = () => {
     return color;
   }
 
-  // Function to generate random colors n times
-  function generateRandomColors(n: number) {
-    const colors = [];
-    for (let i = 0; i < n; i++) {
-      colors.push(getRandomColor());
-    }
-    return colors;
-  }
-
   // Generate random colors
-  const randomColors = generateRandomColors(list?.length);
+  const randomColors1 = getRandomColor();
+  const randomColors2 = getRandomColor();
 
   // chart data
   const data = {
-    labels: [...list],
+    // labels: list,
+    labels: category,
     datasets: [
       {
         label: "Donations",
-        data: [...amounts],
-        backgroundColor: [...randomColors],
+        data: amounts,
+        // backgroundColor: "red",
+        backgroundColor: [randomColors1],
         borderColor: "black",
         borderWidth: 1,
       },
-      //   {
-      //     label: [userEmail],
-      //     data: [...userAmounts],
-      //     backgroundColor: [...randomColors],
-      //     borderColor: "black",
-      //     borderWidth: 1,
-      //   },
+      {
+        label: userEmail,
+        data: userAmounts,
+        // backgroundColor: "blue",
+        backgroundColor: [randomColors2],
+        borderColor: "black",
+        borderWidth: 1,
+      },
     ],
   };
   const options = {};
