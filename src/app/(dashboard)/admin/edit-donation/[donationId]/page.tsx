@@ -1,26 +1,11 @@
 "use client";
 
 import { TParams } from "@/interfaces/TParams";
-import { useAddPostMutation } from "@/redux/features/donationPost/donationPostApi";
 import { Button, Form, Input, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { useRouter } from "next/navigation";
 
-import {
-  useEditPostMutation,
-  useGetPostByIdQuery,
-} from "@/redux/features/donationPost/donationPostApi";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import {
-  setAmount,
-  setCategory,
-  setDetails,
-  setDonation,
-  setId,
-  setImg,
-  setTheme,
-  setTitle,
-} from "@/redux/features/donationPost/donationPostSlice";
+import { useEditPostMutation } from "@/redux/features/donationPost/donationPostApi";
 
 export type TAddDonationFormValues = {
   title: string;

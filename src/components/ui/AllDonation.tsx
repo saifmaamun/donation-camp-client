@@ -3,7 +3,6 @@
 import Loading from "@/app/loading";
 import {
   useDeletePostMutation,
-  useEditPostMutation,
   useGetAllPostsQuery,
 } from "@/redux/features/donationPost/donationPostApi";
 import React from "react";
@@ -27,11 +26,8 @@ interface DataType {
 const AllDonation = () => {
   const { data, isLoading } = useGetAllPostsQuery({});
   const [deletePost] = useDeletePostMutation();
-  const [editPost] = useEditPostMutation();
 
   const router = useRouter();
-
-  // edit
 
   //   delete function
   const handleDelete = (id: string) => {

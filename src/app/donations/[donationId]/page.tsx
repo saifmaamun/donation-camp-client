@@ -25,6 +25,7 @@ const { Text, Link } = Typography;
 
 const DonationDetails = ({ params }: { params: TParams }) => {
   const { data, isLoading } = useGetPostByIdQuery(params.donationId);
+  const { email } = useAppSelector((state) => state.user);
 
   // setting the data into store
   const dispatch = useAppDispatch();
@@ -54,6 +55,7 @@ const DonationDetails = ({ params }: { params: TParams }) => {
   const handleDonation = () => {
     const donationData = {
       id: params.donationId,
+      email: email,
       category: category,
       title: title,
       amount: donation_amount,
