@@ -64,12 +64,13 @@ const DonationDetails = ({ params }: { params: TParams }) => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="container mx-auto my-20 lg:w-3/4 sm:w-2/3">
+        <div className="container mx-auto my-24 lg:w-3/4 sm:w-2/3">
           <Card hoverable>
             <Image
+              className="w-full h-full mx-auto"
               src={data?.data?.img_url}
-              width={100}
-              height={100}
+              width={5000}
+              height={5000}
               alt={data?.data?.title}
             />
             <h1>{data?.data?.title}</h1>

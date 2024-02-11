@@ -7,7 +7,6 @@ import { useAppSelector } from "@/redux/hooks";
 const Donations = () => {
   const { email } = useAppSelector((state) => state.user);
   const { data, isLoading } = useGetAllPostsQuery({});
-  console.log(data?.data);
 
   return <>{isLoading ? <Loading /> : <Donation donations={data?.data} />}</>;
 };
