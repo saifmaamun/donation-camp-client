@@ -12,6 +12,8 @@
 
 - NextJS
 
+- NextAuth
+
 - Typescript
 
 - TailWind
@@ -19,6 +21,12 @@
 - Ant Design
 
 - React Router
+
+- Redux Toolkit
+
+- RTK Query
+
+-
 
 ## Deployment
 
@@ -32,10 +40,10 @@
 
 ## Features
 
-FrontEnd [Git Link] : https://github.com/saifmaamun/donation-camp-client
+- Basic CRUD Operation
 
-FrontEnd [Live Link] : https://donation-camp-client.vercel.app/
+- Customized Authentication with Next Auth
 
-BackEnd [Git Link] : https://github.com/saifmaamun/donation-nextJS
+- User Role Based Actions
 
-BackEnd [Server Link] : https://donation-camp-orpin.vercel.app/
+- Added Pie Chart, Bar Chart for Better Data Visualization
