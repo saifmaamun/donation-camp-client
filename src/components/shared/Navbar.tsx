@@ -96,7 +96,7 @@ const Navbar = ({ session, user }: { session: any; user: TInitialState }) => {
           Menu
         </Button>
         {show && (
-          <div className="relative">
+          <div className="relative z-50">
             <Menu className=" absolute top-8 -right-8 lg:hidden sm:block">
               {items?.map((item) => (
                 <Menu.Item key={item.href}>

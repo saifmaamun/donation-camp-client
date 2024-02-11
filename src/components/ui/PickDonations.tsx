@@ -23,7 +23,7 @@ const PickDonations = ({ donations }: { donations: TDonation[] }) => {
             ...
           </p>
           <p>
-            <span className="font-semibold">Price:</span>{" "}
+            <span className="font-semibold">Contribution :$</span>
             {donation?.donation_amount}
           </p>
 

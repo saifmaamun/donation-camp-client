@@ -89,7 +89,9 @@ const AllDonation = () => {
             <Button
               className="text-xl"
               type="link"
-              onClick={() => router.push(`/admin/edit-donation/${record._id}`)}
+              onClick={() =>
+                router.push(`/dashboard/admin/edit-donation/${record._id}`)
+              }
             >
               <EditOutlined />
             </Button>

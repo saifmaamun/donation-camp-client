@@ -23,7 +23,7 @@ import {
 import { useAddDataMutation } from "@/redux/features/donated/donatedApi";
 import { HeartFilled } from "@ant-design/icons";
 
-const { Text, Link } = Typography;
+const { Text } = Typography;
 
 const DonationDetails = ({ params }: { params: TParams }) => {
   const { data, isLoading } = useGetPostByIdQuery(params.donationId);
@@ -77,14 +77,15 @@ const DonationDetails = ({ params }: { params: TParams }) => {
               {data?.data?.category}
             </Text>
             <p className="">{data?.data?.details}</p>
-            <p>{data?.data?.donation_amount}</p>
+
             <div className="my-4">
               {email && (
                 <Button
                   className="bg-black text-white"
                   onClick={handleDonation}
                 >
-                  Donate {data?.data?.donation_amount} <HeartFilled />
+                  Donate {data?.data?.donation_amount}{" "}
+                  <HeartFilled className="text-red-700" />
                 </Button>
               )}
             </div>

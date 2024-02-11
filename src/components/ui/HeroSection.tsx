@@ -53,15 +53,21 @@ const HeroSection = () => {
         </div>
       </div>
       <div>
-        <div className="mt-20  text-4xl text-center">
-          <h1>Some of Our Events</h1>
+        <div className="mt-20  text-center">
+          <h1 className="lg:text-6xl md:text-5xl text-4xl ">
+            Some of Our Events
+          </h1>
         </div>
         <div className={show}>
-          {isLoading ? <Loading /> : <PickDonations donations={data?.data} />}
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <PickDonations donations={data?.data.slice(0, 3)} />
+          )}
         </div>
         <div>
           {!searchedStateData ? (
-            <PickDonations donations={data?.data} />
+            <PickDonations donations={data?.data.slice(0, 3)} />
           ) : (
             <PickDonations donations={searchedStateData} />
           )}

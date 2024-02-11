@@ -1,6 +1,8 @@
 import { TDonation } from "@/interfaces/IDonationsPost";
-import { Button } from "antd";
+import { Button, Typography } from "antd";
 import Link from "next/link";
+
+const { Text } = Typography;
 
 const Donation = ({ donations }: { donations: TDonation[] }) => {
   return (
@@ -16,6 +18,9 @@ const Donation = ({ donations }: { donations: TDonation[] }) => {
               : donation?.title}
             ...
           </h2>
+          <Text type="danger" className="font-bold">
+            {donation.category}
+          </Text>
           <p className="my-3">
             {donation?.details.length > 150
               ? donation?.details.slice(0, 150)
@@ -23,7 +28,7 @@ const Donation = ({ donations }: { donations: TDonation[] }) => {
             ...
           </p>
           <p>
-            <span className="font-semibold">Price:</span>{" "}
+            <span className="font-semibold">Contribution :$</span>{" "}
             {donation?.donation_amount}
           </p>
 

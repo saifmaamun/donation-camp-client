@@ -93,7 +93,7 @@ const Login = () => {
       </form>
       <p className="text-sm pt-2 font-semibold ">
         New Here?
-        <Link className="text-sky-500 underline ml-2" href="/register">
+        <Link className="text-sky-500 underline ml-2" href="/signin">
           Create a new account
         </Link>
       </p>
