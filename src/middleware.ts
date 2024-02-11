@@ -8,7 +8,6 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const role = token?.role;
-  console.log(token, role);
 
   // role checking
 

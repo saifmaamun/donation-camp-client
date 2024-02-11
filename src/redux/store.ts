@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "./api/baseApi";
 import donationReducer from "./features/donationPost/donationPostSlice";
 import userReducer from "./features/user/userSlice";
+import searchedReducer from "./features/searched/searchedSlice";
 // import donatedReducer from "./features/donated/donatedSlice";
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     donation: donationReducer,
     // donated: donatedReducer,
     user: userReducer,
+    searched: searchedReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(baseApi.middleware),

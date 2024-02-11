@@ -30,7 +30,7 @@ const Signin = () => {
   // sign in function
   const onSubmit = async (data: TForm) => {
     const { ...res } = data;
-    console.log(res);
+
     const credential = {
       email: res.email,
       password: res.password,

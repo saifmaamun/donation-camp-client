@@ -21,7 +21,7 @@ const AddDonationForm = () => {
   const router = useRouter();
   const [form] = Form.useForm();
   const onFinish = async (values: TAddDonationFormValues) => {
-    console.log(values);
+    values;
     addPost(values).then(() => message.success("added successfully"));
   };
   const onFinishFailed = (errorInfo: any) => {

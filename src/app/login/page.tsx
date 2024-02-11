@@ -19,7 +19,6 @@ const Login = () => {
   } = useForm<TForm>();
 
   const onSubmit = async (data: TForm) => {
-    console.log(data);
     signIn("donation", {
       email: data.email,
       password: data.password,

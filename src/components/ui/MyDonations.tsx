@@ -49,8 +49,6 @@ const MyDonations = () => {
     },
   ];
 
-  // Log the matching entries to the console
-  // console.log(matchingEntries);
   return (
     <>
       {isLoading ? (

@@ -39,12 +39,12 @@ const StatisticalRepresentation = () => {
   const { data: donationPost } = useGetAllPostsQuery({});
   const { data: users } = useGetUsersQuery({});
   const { email: userEmail } = useAppSelector((state) => state.user);
-  console.log(userEmail);
+
   const totalAmount = donatedData?.data.reduce(
     (sum: any, donation: { amount: any }) => sum + donation.amount,
     0
   );
-  //   console.log(totalAmount);
+
   // for chart data
   const list = donationPost?.data?.map((item: { title: any }) => item.title);
   const amounts = donationPost?.data?.map(
@@ -61,9 +61,8 @@ const StatisticalRepresentation = () => {
   const matchedData = donatedData?.data.filter(
     (data: { email: string }) => data.email === userEmail
   );
-  //   console.log(matchedData);
+
   const userAmounts = matchedData?.map((item: { amount: any }) => item.amount);
-  //   console.log(userAmounts);
 
   // random color
   // Function to generate a random hex color
