@@ -8,10 +8,6 @@ const Home = () => {
     <>
       <HeroSection />
       <JoinUs />
-      {/* <div className="mt-20  text-4xl text-center">
-        <h1>Some of Our Events</h1>
-      </div>
-      <Donations /> */}
     </>
   );
 };
