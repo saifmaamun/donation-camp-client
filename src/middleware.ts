@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  return NextResponse.redirect(`${process.env.BASE_URL}`);
+  return NextResponse.redirect(`https://donation-camp-client.vercel.app/`);
 }
 
 // See "Matching Paths" below to learn more

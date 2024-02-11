@@ -1,5 +1,5 @@
 export const getAllDonations = async () => {
-  const res = await fetch(`http://localhost:5000/api/v1/posts`, {
+  const res = await fetch(`${process.env.SERVER_URL}/posts`, {
     next: {
       revalidate: 5,
     },

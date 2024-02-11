@@ -79,9 +79,14 @@ const DonationDetails = ({ params }: { params: TParams }) => {
             <p className="">{data?.data?.details}</p>
             <p>{data?.data?.donation_amount}</p>
             <div className="my-4">
-              <Button className="bg-black text-white" onClick={handleDonation}>
-                Donate {data?.data?.donation_amount} <HeartFilled />
-              </Button>
+              {email && (
+                <Button
+                  className="bg-black text-white"
+                  onClick={handleDonation}
+                >
+                  Donate {data?.data?.donation_amount} <HeartFilled />
+                </Button>
+              )}
             </div>
           </Card>
         </div>
